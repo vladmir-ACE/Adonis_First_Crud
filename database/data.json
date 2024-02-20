@@ -1,0 +1,1 @@
+{"users":[{"id":1,"nom":"abalo","prenom":"kodjo","sexe":"M","age":30},{"id":2,"nom":"koffi","prenom":"kodjo","sexe":"M","age":40}],"books":[{"id":1,"nom":"kingkong","user_id":"1"}]}
