@@ -1,6 +1,9 @@
- import Book from '#models/book';
+import Book from '#models/book';
 import BookService from '#services/book_service';
+import { Application } from '@adonisjs/core/app';
+import { cuid } from '@adonisjs/core/helpers';
 import type { HttpContext } from '@adonisjs/core/http'
+import app from '@adonisjs/core/services/app';
 
 export default class BooksController {
     private bookService = new BookService()
@@ -13,13 +16,26 @@ export default class BooksController {
 
   } 
 
-  async store({request}: HttpContext) {
+  async store({request}: HttpContext) {[]
     // save book
-        
+    
+      // get pdf
+       let file= request.file('doc', {
+        size: '50mb',
+        extnames: ['pdf']
+      });
+      
+       const filename=cuid()+'.'+file!.extname;
+       console.log(filename)
+      // move pdf
+      await file!.move(app.makePath('uploads'),{
+        name:filename
+      })
+       
         let data:any=request.body();
         console.log(data);
 
-        let book:Book=new Book(data.nom,data.user_id)
+        let book:Book=new Book(data.nom,data.user_id,filename)
           this.bookService.create(book)  
 
   }
