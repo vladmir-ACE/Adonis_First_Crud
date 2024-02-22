@@ -25,6 +25,7 @@ router.delete( '/deleteUser/:id', [UtilisateursController,'delete'])
 
 //book
 router.post( '/addBook', [BooksController,'store'])
+router.post( 'user/:id/addBook', [BooksController,'addByUser'])
 router.get( '/listBook/', [BooksController,'index'])
 router.get( '/listBook/:id', [BooksController,'show'])
 router.put('updateBook/:id',[BooksController,'update'])

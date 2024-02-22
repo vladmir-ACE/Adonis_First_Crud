@@ -17,7 +17,7 @@ export default class UtilisateursService {
         newUser.id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
         users.push(newUser);
         await fs.writeJson(this.filePath, { users , books:usersData.books });
-        return newUser;
+        
       }
 
       // Liste User
@@ -68,7 +68,7 @@ export default class UtilisateursService {
         // mis a jour
         await fs.writeJson(this.filePath, { users ,books:usersData.books});
         
-        return user;
+        
 
       }
       //delete user 
@@ -87,10 +87,5 @@ export default class UtilisateursService {
         await fs.writeJson(this.filePath, { users ,books:usersData.books});
         
       }
-
-
-
-
-
 
 }

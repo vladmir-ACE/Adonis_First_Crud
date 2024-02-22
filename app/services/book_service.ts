@@ -21,7 +21,7 @@ export default class BookService {
         books.push(newBook);
         // mis a jours 
         await fs.writeJson(this.filePath, {users: BooksData.users, books });
-        return newBook;
+       
       }
 
       async liste() {
@@ -49,7 +49,7 @@ export default class BookService {
         
         const book = books.find((b:any)=> b.id ==id);
 
-        console.log(book)
+        console.log(book);
         return book;      
        
       }
@@ -65,7 +65,7 @@ export default class BookService {
         books.forEach((item: Book) => {
           if (item.id==id) {
             item.nom=book.nom;
-            item.user_id=book.user_id;
+            item.file=book.file!=""?book.file:item.file;
             
             console.log(item);
           }
